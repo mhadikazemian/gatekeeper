@@ -11,6 +11,7 @@ export default [
   js.configs.recommended,
   ...ts.configs.recommended,
   {
+    files: ["**/*.ts", "**/*.tsx"],
     plugins: {
       react,
       "react-hooks": reactHooks,

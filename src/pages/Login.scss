@@ -1,0 +1,16 @@
+.login-page {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.125rem;
+    padding-top: 10rem;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw !important;
+
+    .login-card {
+        .ant-form-item:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}

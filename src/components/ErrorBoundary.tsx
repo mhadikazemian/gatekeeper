@@ -15,6 +15,7 @@ export class ErrorBoundary extends React.Component<{ children: React.ReactNode }
   }
   reset = () => this.setState({ hasError: false });
   render() {
+
     if (this.state.hasError) {
       return (
         <Result

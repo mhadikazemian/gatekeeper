@@ -95,19 +95,6 @@ Tests are split into:
 - `npm run lint` - Run ESLint
 - `npm run format` - Format code with Prettier
 
-## Project Structure
-
-```
-src/
-├── apollo/          # Apollo Client configuration
-├── components/      # Reusable UI components
-├── context/         # React context providers
-├── graphql/         # GraphQL queries and mutations
-├── pages/           # Page components
-├── assets/          # Static assets
-└── i18n.ts         # Internationalization setup
-```
-
 ## Contributing
 
 1. Fork the repository

@@ -19,7 +19,6 @@ export const AppHeader: React.FC = () => {
     const { setToken, token } = useAuth();
     const navigate = useNavigate();
 
-    console.log(lang)
     const logout = () => {
         setToken(null);
         navigate("/login");

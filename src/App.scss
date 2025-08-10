@@ -52,8 +52,16 @@
     }
 
     @media screen and (max-width: 600px) {
+        .login-page,
+        .account-page {
+            padding-top: 4rem !important;
+        }
         .app-header {
             justify-content: space-between;
+            padding: 1rem;
+            img {
+                width: 150px !important;
+            }
         }
         .ant-card {
             border-color: transparent !important;

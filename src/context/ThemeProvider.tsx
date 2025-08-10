@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { ConfigProvider, theme as antdTheme } from "antd";
 
-const THEME_KEY = "getekeeper_dark_mode";
+const THEME_KEY = "gatekeeper_dark_mode";
 
 type ThemeContextType = {
     darkMode: boolean;

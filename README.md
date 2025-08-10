@@ -1,69 +1,121 @@
-# React + TypeScript + Vite
+# Gatekeeper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, multilingual, and theme-aware authentication portal built with React, TypeScript, Ant Design, and Apollo Client.
 
-Currently, two official plugins are available:
+Implements secure login, account details view, dark mode, and language switching (English / German).  
+Includes unit and integration test coverage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Login & Logout** via GraphQL API
+- **Protected Routes** with React Router
+- **Account Page** showing first & last name
+- **Dark Mode Toggle** (persisted in localStorage)
+- **Language Switcher** (English / German via i18next)
+- **Responsive UI** with Ant Design
+- **Apollo Client** with auth token handling
+- **Unit & Integration Tests** (Vitest + Testing Library)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React 18 + TypeScript**
+- **Ant Design 5**
+- **React Router v6**
+- **Apollo Client 3**
+- **i18next + react-i18next**
+- **Vitest + Testing Library**
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Requirements
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js >= 18
+- npm >= 9
+
+## Getting Started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/yourusername/gatekeeper.git
+cd gatekeeper
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 3. Environment variables
+
+Create a `.env` file in the project root:
+
+```env
+VITE_GRAPHQL_ENDPOINT=https://example.com/graphql
+VITE_AUTH_TOKEN_KEY=auth_token
+```
+
+You can also create `.env.local` or `.env.production` for different environments.
+
+### 4. Run development server
+
+```bash
+npm run dev
+```
+
+The app will be available at http://localhost:5173.
+
+## Running Tests
+
+### Run all tests
+
+```bash
+npm run test
+```
+
+### Run tests with UI
+
+```bash
+npm run test:ui
+```
+
+### Test Structure
+
+Tests are split into:
+
+- **Unit tests** → For isolated hooks & logic
+- **Integration tests** → For page flows with mocked GraphQL
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run test` - Run tests
+- `npm run test:ui` - Run tests with UI
+- `npm run lint` - Run ESLint
+- `npm run format` - Format code with Prettier
+
+## Project Structure
+
+```
+src/
+├── apollo/          # Apollo Client configuration
+├── components/      # Reusable UI components
+├── context/         # React context providers
+├── graphql/         # GraphQL queries and mutations
+├── pages/           # Page components
+├── assets/          # Static assets
+└── i18n.ts         # Internationalization setup
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Submit a pull request
+
+## License
+
+MIT License - see [LICENSE](LICENSE) file for details.

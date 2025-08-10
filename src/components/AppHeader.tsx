@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 const { Header } = Layout;
 
 export const AppHeader: React.FC = () => {
-    const { lang, setLang } = useI18n();
+    const { setLang } = useI18n();
     const { darkMode, toggleDarkMode } = useTheme();
     const { t } = useTranslation();
 

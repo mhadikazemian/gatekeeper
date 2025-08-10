@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const AUTH_KEY = import.meta.env.VITE_AUTH_TOKEN_KEY ?? "auth_token";
 
@@ -13,12 +13,15 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [token, setTokenState] = useState<string | null>(() => localStorage.getItem(AUTH_KEY));
 
-    useEffect(() => {
-        if (token) localStorage.setItem(AUTH_KEY, token);
-        else localStorage.removeItem(AUTH_KEY);
-    }, [token]);
-
-    const setToken = (t: string | null) => setTokenState(t);
+    const setToken = (t: string | null) => {
+        setTokenState(t);
+        // Immediately update localStorage to ensure Apollo Client picks it up
+        if (t) {
+            localStorage.setItem(AUTH_KEY, t);
+        } else {
+            localStorage.removeItem(AUTH_KEY);
+        }
+    };
 
     return (
         <AuthContext.Provider value={{ token, setToken, isAuthenticated: !!token }}>

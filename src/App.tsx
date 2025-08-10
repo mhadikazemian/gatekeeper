@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import './App.scss'
 import { ErrorBoundary } from './components/ErrorBoundary'
-import { AuthProvider, useAuth } from './context/AuthProvider'
+import { AuthProvider } from './context/AuthProvider'
 import { ApolloProvider } from '@apollo/client'
 import { apolloClient } from './apollo/client'
 import LoginPage from './pages/Login'
@@ -12,9 +12,9 @@ import { AppHeader } from './components/AppHeader'
 import { AppFooter } from './components/AppFooter'
 import { ThemeProvider, useTheme } from './context/ThemeProvider'
 import { I18nProvider } from './context/I18nProvider'
+import { PrivateRoute } from './components/PrivateRoute'
 
 function AppRoutes() {
-  const { token } = useAuth();
   const { darkMode } = useTheme();
 
   return (
@@ -23,9 +23,9 @@ function AppRoutes() {
         <AppHeader />
         <ErrorBoundary>
           <Routes>
-            <Route path="/" element={token ? <Navigate to="/account" replace /> : <Navigate to="/login" replace />} />
-            <Route path="/login" element={token ? <Navigate to="/account" replace /> : <LoginPage />} />
-            <Route path="/account" element={token ? <AccountPage /> : <Navigate to="/login" replace />} />
+            <Route path="/" element={<Navigate to="/account" replace />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/account" element={<PrivateRoute children={<AccountPage />} />} />
           </Routes>
           <Toaster />
         </ErrorBoundary>

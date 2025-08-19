@@ -1,4 +1,5 @@
 import { ApolloClient, createHttpLink, InMemoryCache, ApolloLink } from "@apollo/client";
+import Cookies from "js-cookie";
 
 const GRAPHQL_ENDPOINT = import.meta.env.VITE_GRAPHQL_ENDPOINT as string;
 const AUTH_KEY = import.meta.env.VITE_AUTH_TOKEN_KEY ?? "auth_token";
@@ -6,7 +7,7 @@ const AUTH_KEY = import.meta.env.VITE_AUTH_TOKEN_KEY ?? "auth_token";
 const httpLink = createHttpLink({ uri: GRAPHQL_ENDPOINT });
 
 const authLink = new ApolloLink((operation, forward) => {
-  const token = localStorage.getItem(AUTH_KEY);
+  const token = Cookies.get(AUTH_KEY);
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
